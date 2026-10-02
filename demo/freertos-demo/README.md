@@ -43,7 +43,7 @@ make            # in WSL: build/app.elf, build/app.lst, build/app.map
 
 In the simulator: analysis **System on chip (SoC)**, default configuration, core FemtoRV32
 Intermissum-FDE, AONR-V (all three organizations) or VeeR EH2 → "📂 ELF" →
-`build/app.elf` → "▶ Run". Press buttons in the **Peripherals → gpio0** panel (click = press);
+`build/app.elf` → "▶ Run". Press buttons in the **Sensors and actuators** panel (hold = press);
 messages appear in the **Console** panel, and the LEDs on the GPIO count the presses.
 From VS Code: "🐞 GDB server" in the simulator, then F5 (as with soc-demo).
 
@@ -51,7 +51,7 @@ Example output (buttons 2, 5, 2 and 6 pressed):
 
 ```
 FreeRTOS V11.3.1 - producer/consumer
-press a button on the GPIO (Peripherals panel, gpio0)
+press a button (Sensors and actuators panel, sw0-sw7)
 30 ms  button 2 pressed (1. time)
 60 ms  button 5 pressed (1. time)
 90 ms  button 2 pressed (2. time)

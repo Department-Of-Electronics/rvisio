@@ -32,7 +32,7 @@ What to watch:
 * **Peripheral events and interrupts**: every timer and UART interrupt, when it was requested and handled;
 * **Processor**: `mepc` (where the main program was interrupted) and `mcause` (which interrupt) inside the handler;
 * **Stack analyzer**: the handler saves registers on the stack and restores them before `mret`;
-* **Peripherals → gpio0**: the LEDs count the timer interrupts.
+* **Sensors and actuators**: the LEDs count the timer interrupts.
 
 ## Debug from VS Code
 

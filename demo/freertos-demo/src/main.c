@@ -7,7 +7,7 @@
  *   producer           (priority 2) waits for a notification, builds a message for every pressed button and sends it to the queue
  *   consumer           (priority 1) waits for a message in the queue and prints it to the console; the LEDs show the number of presses
  *
- * In the simulator: Peripherals panel → gpio0 → click a button (0–7); the output is in the Console panel.
+ * In the simulator: Sensors and actuators panel → hold a button (sw0–sw7); the output is in the Console panel.
  * On a real board the program would work the same: the tasks sleep (the processor runs the idle task) until a button is pressed.
  */
 #include <stdint.h>
@@ -106,7 +106,7 @@ static void vConsumerTask( void * pv )
 int main( void )
 {
     uart_puts( "FreeRTOS " tskKERNEL_VERSION_NUMBER " - producer/consumer\n" );
-    uart_puts( "press a button on the GPIO (Peripherals panel, gpio0)\n" );
+    uart_puts( "press a button (Sensors and actuators panel, sw0-sw7)\n" );
 
     xMessages = xQueueCreate( 8, sizeof( ButtonMsg_t ) );
     configASSERT( xMessages );

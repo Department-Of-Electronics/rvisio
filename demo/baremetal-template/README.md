@@ -23,7 +23,7 @@ make                         # app.elf
 ```
 
 RVisio → **System on chip (SoC)** → **📂 ELF** → `app.elf` → **⏭ To end**. The text appears in the
-**Console** panel, the counter on the LEDs in **Peripherals → gpio0**.
+**Console** panel, the counter on the LEDs in **Sensors and actuators**.
 
 ## Debug from VS Code
 
