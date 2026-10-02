@@ -1,0 +1,43 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug on the SoC simulator",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/app.elf",
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb-multiarch",
+      // the C/C++ extension does not know RISC-V ("arch" error); this is only for it – gdb runs as riscv:rv32
+      "targetArchitecture": "arm",
+      "preLaunchTask": "make",
+      // connect to the simulator (the port shown by "🐞 GDB server"), erase the memories,
+      // write the program to Flash and stop at the start of main
+      "customLaunchSetupCommands": [
+        { "text": "set architecture riscv:rv32" },
+        { "text": "file build/app.elf" },
+        { "text": "target extended-remote 127.0.0.1:3333" },
+        { "text": "monitor erase" },
+        { "text": "load" },
+        { "text": "tbreak main" }
+      ],
+      "launchCompleteCommand": "exec-continue",
+      // VS Code on Windows: gdb-multiarch runs in WSL (default distribution); cwd "." is the project
+      // folder (wsl.exe starts there), sourceFileMap translates /mnt/c/... <-> C:/...
+      "windows": {
+        "program": "${workspaceFolder}/build/app.elf",
+        "cwd": ".",
+        "miDebuggerPath": "/usr/bin/gdb-multiarch",
+        "pipeTransport": {
+          "pipeProgram": "C:\\Windows\\System32\\wsl.exe",
+          // VS Code sends "gdb-multiarch --interpreter=mi" as a single argument – bash -c splits it
+          "pipeArgs": ["-e", "bash", "-c"],
+          "debuggerPath": "/usr/bin/gdb-multiarch",
+          "pipeCwd": "${workspaceFolder}"
+        },
+        "sourceFileMap": { "/mnt/c/": "C:/", "/mnt/d/": "D:/", "/mnt/e/": "E:/" }
+      }
+    }
+  ]
+}

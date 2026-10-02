@@ -1,0 +1,115 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "SoC, Windows (WSL)",
+      "type": "cppdbg",
+      "request": "launch",
+      "MIMode": "gdb",
+      "targetArchitecture": "arm",
+      "customLaunchSetupCommands": [
+        {
+          "text": "set architecture riscv:rv32"
+        },
+        {
+          "text": "file app.elf"
+        },
+        {
+          "text": "target extended-remote 127.0.0.1:3333"
+        },
+        {
+          "text": "monitor erase"
+        },
+        {
+          "text": "load"
+        },
+        {
+          "text": "tbreak main"
+        }
+      ],
+      "launchCompleteCommand": "exec-continue",
+      "program": "${workspaceFolder}/app.elf",
+      "cwd": ".",
+      "preLaunchTask": "make (WSL)",
+      "pipeTransport": {
+        "pipeProgram": "C:\\Windows\\System32\\wsl.exe",
+        "pipeArgs": [
+          "-e",
+          "bash",
+          "-c"
+        ],
+        "debuggerPath": "/usr/bin/gdb-multiarch",
+        "pipeCwd": "${workspaceFolder}"
+      },
+      "sourceFileMap": {
+        "/mnt/c/": "C:/",
+        "/mnt/d/": "D:/",
+        "/mnt/e/": "E:/"
+      }
+    },
+    {
+      "name": "SoC, Linux (also for a folder opened in WSL)",
+      "type": "cppdbg",
+      "request": "launch",
+      "MIMode": "gdb",
+      "targetArchitecture": "arm",
+      "customLaunchSetupCommands": [
+        {
+          "text": "set architecture riscv:rv32"
+        },
+        {
+          "text": "file app.elf"
+        },
+        {
+          "text": "target extended-remote 127.0.0.1:3333"
+        },
+        {
+          "text": "monitor erase"
+        },
+        {
+          "text": "load"
+        },
+        {
+          "text": "tbreak main"
+        }
+      ],
+      "launchCompleteCommand": "exec-continue",
+      "program": "${workspaceFolder}/app.elf",
+      "cwd": "${workspaceFolder}",
+      "miDebuggerPath": "gdb-multiarch",
+      "preLaunchTask": "make"
+    },
+    {
+      "name": "SoC, Windows (xPack, no WSL)",
+      "type": "cppdbg",
+      "request": "launch",
+      "MIMode": "gdb",
+      "targetArchitecture": "arm",
+      "customLaunchSetupCommands": [
+        {
+          "text": "set architecture riscv:rv32"
+        },
+        {
+          "text": "file app.elf"
+        },
+        {
+          "text": "target extended-remote 127.0.0.1:3333"
+        },
+        {
+          "text": "monitor erase"
+        },
+        {
+          "text": "load"
+        },
+        {
+          "text": "tbreak main"
+        }
+      ],
+      "launchCompleteCommand": "exec-continue",
+      "program": "${workspaceFolder}/app.elf",
+      "cwd": "${workspaceFolder}",
+      "miDebuggerPath": "riscv-none-elf-gdb",
+      "preLaunchTask": "make (xPack)"
+    }
+  ]
+}

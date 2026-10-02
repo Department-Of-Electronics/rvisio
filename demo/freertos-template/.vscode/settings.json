@@ -1,0 +1,8 @@
+{
+    // breakpoints in assembly files too (startup.S, portASM.S) – otherwise VS Code allows them
+    // only in languages the debugger registers (C/C++)
+    "debug.allowBreakpointsEverywhere": true,
+    // the project is built with the Makefile (Terminal → Run Build Task), not with CMake from FreeRTOS-Kernel
+    "cmake.configureOnOpen": false,
+    "cmake.autoSelectActiveFolder": false
+}

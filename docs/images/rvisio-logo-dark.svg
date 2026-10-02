@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 64" role="img" aria-label="RVisio">
+  <defs>
+    <linearGradient id="rv-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="rv-t" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <g stroke="url(#rv-g)" stroke-width="3.4" stroke-linecap="round">
+    <path d="M22 4v6M32 4v6M42 4v6M22 54v6M32 54v6M42 54v6M4 22h6M4 32h6M4 42h6M54 22h6M54 32h6M54 42h6"/>
+  </g>
+  <rect x="11" y="11" width="42" height="42" rx="11" fill="url(#rv-g)"/>
+  <path d="M17.5 32C22.5 23.2 41.5 23.2 46.5 32C41.5 40.8 22.5 40.8 17.5 32Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="32" cy="32" r="6.6" fill="#fff"/>
+  <rect x="29.2" y="29.2" width="5.6" height="5.6" rx="1.2" fill="#1d4ed8"/>
+  <!-- RVisio: „RV“ u boji, „isio“ u boji teksta (currentColor) -->
+  <text x="74" y="45" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-1">
+    <tspan fill="url(#rv-t)">RV</tspan><tspan fill="#e2e8f0" font-weight="650">isio</tspan>
+  </text>
+</svg>

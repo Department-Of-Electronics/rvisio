@@ -1,0 +1,12 @@
+# build output (make)
+build/
+*.o
+*.elf
+*.map
+*.lst
+# editor / OS
+.vscode/ipch/
+.vscode/*.log
+*.code-workspace
+.DS_Store
+Thumbs.db

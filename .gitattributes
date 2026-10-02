@@ -1,0 +1,4 @@
+# LF everywhere: Makefiles, assembly and shell must work in Linux / WSL
+* text=auto eol=lf
+*.jpg binary
+*.png binary
