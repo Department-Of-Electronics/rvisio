@@ -28,10 +28,16 @@ RVisio → **System on chip (SoC)** → **📂 ELF** → `app.elf` → **⏭ To 
 ## Debug from VS Code
 
 1. RVisio → **System on chip (SoC)** → **🐞 GDB server**. A **code** appears.
-2. If RVisio does not run on your own computer (for example rvisio.com), start the bridge and leave it running:
-   `python3 rvsim-gdb.py CODE` (the script is in `tools/` of this repository, or download it in RVisio:
-   📘 VS Code guide → Materials). Windows with WSL: `wsl python3 rvsim-gdb.py CODE`.
-3. VS Code: open this folder, Run and Debug (Ctrl+Shift+D) → choose the configuration → **F5**.
+2. If RVisio does not run on your own computer (for example rvisio.com), start the bridge in this folder and
+   leave it running (the script is in `tools/` at the root of the repository, or download it in RVisio:
+   📘 VS Code guide → Materials):
+   * Linux: `python3 ../../tools/rvsim-gdb.py CODE`
+   * Windows with WSL: `wsl python3 ../../tools/rvsim-gdb.py CODE` (with `wsl` in front: GDB runs in WSL)
+   * Windows without WSL: `py ..\..\tools\rvsim-gdb.py CODE`
+
+   The bridge talks to https://rvisio.com by default; for another address add `--server <address>`.
+3. VS Code: File → Open Folder → **this folder** (with the Makefile and .vscode, not the whole repository),
+   Run and Debug (Ctrl+Shift+D) → choose the configuration → **F5**.
    The program is built, GDB attaches to 127.0.0.1:3333, erases the memories, loads the program and stops at `main`.
 4. Breakpoints, F10/F11, variables and registers work as on a real board; the browser shows the whole SoC,
    and the **Program** panel lists the code GDB loaded with the current instruction highlighted.
@@ -46,6 +52,10 @@ Debug console: `-exec monitor reset`, `-exec monitor erase`, `-exec info registe
 * **Windows without WSL:** xPack RISC-V GCC (riscv-none-elf-gcc) and xPack Windows Build Tools (make), Python 3;
   configuration **SoC, Windows (xPack, no WSL)**.
 * **Linux:** `sudo apt install -y gcc-riscv64-unknown-elf gdb-multiarch make python3`; configuration **SoC, Linux**.
+
+Both Windows routes need Windows 10 or 11 (64-bit). WSL also needs Windows 10 version 2004 or later,
+administrator rights for the installation and virtualization turned on in the BIOS (it often does not work
+inside a virtual machine). xPack needs neither, so it suits lab computers and locked laptops.
 
 ## Your own board
 

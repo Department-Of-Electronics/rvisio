@@ -89,6 +89,23 @@ and in **📦 FreeRTOS demos**.
 
 ### 1. Toolchain
 
+**Which route on Windows?** Both need Windows 10 or 11 (64-bit), because VS Code and current Python do.
+
+| | Windows + WSL | Windows without WSL (xPack) |
+|---|---|---|
+| Windows version | Windows 10 version 2004 or later, or Windows 11 (64-bit) | Windows 10 or 11 (64-bit) |
+| Home edition | works | works |
+| Administrator rights | needed to install WSL | not needed (the tools are just unpacked) |
+| Virtualization in the BIOS | must be on | not needed |
+| Inside a virtual machine | often does not work (needs nested virtualization) | works |
+| Disk space | about 1–2 GB (Ubuntu and the tools) | about 300–500 MB |
+| Projects in this repository | all | for now only [`baremetal-template`](demo/baremetal-template) |
+
+WSL is the recommended route: one script installs everything and the tools are the same as on Linux.
+xPack is the better choice for lab computers without administrator rights, locked work laptops, computers
+with virtualization turned off and Windows in a virtual machine. Step by step instructions for both are in
+RVisio: SoC → **📘 VS Code guide**.
+
 Linux or Windows with WSL (Ubuntu):
 
 ```bash
@@ -121,10 +138,22 @@ RVisio works as a GDB server, like a development board attached to your computer
 
 1. Install VS Code with the **C/C++** extension (`ms-vscode.cpptools`); on Windows also WSL and the
    **WSL** extension.
-2. Open a project folder (for example `demo/freertos-demo`) in VS Code.
+2. Open **exactly the project folder** (the one with the `Makefile` and `.vscode/`, for example
+   `demo/freertos-demo`) in VS Code: File → Open Folder. Not the whole repository, not `src` and not just
+   `main.c`, otherwise VS Code does not see the debug configuration.
 3. In RVisio (SoC) click **🐞 GDB server**. When the simulator runs on another computer, it shows a short
-   code; start the small bridge script with it and leave it running: `python3 tools/rvsim-gdb.py <code>`
-   (Windows with WSL: `wsl python3 tools/rvsim-gdb.py <code>`).
+   code; start the bridge script (it is in `tools/` at the root of the repository) with it from the
+   project folder and leave it running:
+
+   ```bash
+   python3 ../../tools/rvsim-gdb.py <code>          # Linux
+   wsl python3 ../../tools/rvsim-gdb.py <code>      # Windows with WSL (PowerShell)
+   py ..\..\tools\rvsim-gdb.py <code>               # Windows without WSL (xPack)
+   ```
+
+   On Windows with WSL start the bridge **with `wsl` in front**: GDB runs in WSL and looks for the bridge on
+   `127.0.0.1:3333` inside WSL. The bridge talks to `https://rvisio.com` by default; for a simulator at
+   another address add `--server`, for example `--server http://localhost:8000`.
 4. Press **F5** in VS Code: the project is built (`make`), GDB connects, erases the memories, loads the
    program and stops at `main`. Breakpoints, stepping and variables work as usual, also in assembly
    (`startup.S`, the port).
@@ -134,6 +163,20 @@ RVisio works as a GDB server, like a development board attached to your computer
 The `.vscode/` configurations have no absolute paths: on Windows GDB runs in WSL (default distribution) and
 paths are mapped automatically (`/mnt/c/...` ↔ `C:/...`); on Linux, or for a folder opened in WSL, the
 same `launch.json` uses `gdb-multiarch` directly.
+
+### Troubleshooting
+
+| Symptom | Cause and fix |
+|---|---|
+| F5 runs `main.c` as a Windows program, asks for a compiler (`cl.exe`, `gcc`) or offers to create `launch.json` | The project folder is not open. File → Open Folder → for example `demo/freertos-demo`, then choose the SoC configuration in Run and Debug. |
+| The bridge says it is connected, but F5 cannot connect (connection refused or timeout) | Windows with WSL: the bridge was started with Windows Python. Stop it and start it with `wsl python3 ../../tools/rvsim-gdb.py <code>`. |
+| `can't open file … rvsim-gdb.py` | The bridge is in `tools/` at the root of the repository: `../../tools/rvsim-gdb.py` from a project folder. |
+| Bridge: unknown code, although the code is correct | The bridge and the browser page use different servers: add `--server <address of the page>`. |
+| Connection refused / `monitor` command not supported | Turn on **🐞 GDB server** in RVisio; if the simulator is on a server, start the bridge. |
+| Remote connection closed | The tab with the SoC was closed or reloaded: open the SoC, click **🐞 GDB server**, press F5 again. |
+| WSL: “Please enable the Virtual Machine Platform” / `0x80370102` | Virtualization is off in the BIOS or Windows runs in a virtual machine: turn on Intel VT-x / AMD-V, or use the xPack route. |
+
+More cases are in RVisio: SoC → **📘 VS Code guide** → Troubleshooting.
 
 ## Your own application
 
