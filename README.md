@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<h3 align="center">Understand a RISC-V system by <i>seeing</i> it.</h3>
+<h3 align="center">Understand a RISC-V system by <i>visualizing</i> it.</h3>
 
 <p align="center">
   Demo projects for <b>RVisio</b>, an educational platform for the embedded software and hardware of RISC-V based systems.<br>
