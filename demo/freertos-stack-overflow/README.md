@@ -1,7 +1,7 @@
 # FreeRTOS – stack overflow
 
 > **Run it in the browser:** [rvisio.com](https://rvisio.com) → Open simulator → **System on chip (SoC)** →
-> **📦 FreeRTOS demos** → *Stack overflow (recursion)* → **▶ Run** (no toolchain needed).
+> **📦 FreeRTOS demos** → *Stack overflow (recursion)* → **⬇ Load program** → **▶ Run** (no toolchain needed).
 
 
 A demonstration of what happens when a task uses more stack than it was given, and how FreeRTOS

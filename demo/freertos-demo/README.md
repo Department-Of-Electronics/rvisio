@@ -1,7 +1,7 @@
 # FreeRTOS on the RVisio SoC
 
 > **Run it in the browser:** [rvisio.com](https://rvisio.com) → Open simulator → **System on chip (SoC)** →
-> **📦 FreeRTOS demos** → *Producer and consumer* → **▶ Run** (no toolchain needed).
+> **📦 FreeRTOS demos** → *Producer and consumer* → **⬇ Load program** → **▶ Run** (no toolchain needed).
 
 
 FreeRTOS-Kernel **V11.3.1** (latest release, https://github.com/FreeRTOS/FreeRTOS-Kernel, MIT license)

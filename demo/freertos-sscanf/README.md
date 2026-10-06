@@ -1,7 +1,7 @@
 # FreeRTOS – sscanf() is not thread-safe (race condition and stack overflow)
 
 > **Run it in the browser:** [rvisio.com](https://rvisio.com) → Open simulator → **System on chip (SoC)** →
-> **📦 FreeRTOS demos** → *sscanf: a race between tasks (and the other three sscanf demos)* → **▶ Run** (no toolchain needed).
+> **📦 FreeRTOS demos** → *sscanf: a race between tasks (and the other three sscanf demos)* → **⬇ Load program** → **▶ Run** (no toolchain needed).
 
 
 Many C-library functions were written before RTOSes and threads: `strtok()`, `rand()`, `asctime()`,

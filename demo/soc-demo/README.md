@@ -1,7 +1,7 @@
 # Interrupts without an operating system (timer + UART)
 
 > **Run it in the browser:** [rvisio.com](https://rvisio.com) → Open simulator → **System on chip (SoC)** →
-> **📦 FreeRTOS demos** → *Interrupts without an operating system* → **▶ Run**.
+> **📦 FreeRTOS demos** → *Interrupts without an operating system* → **⬇ Load program** → **▶ Run**.
 
 A bare-metal C program for the RVisio SoC: the main program "does work" (counts in a loop) and two
 interrupts interrupt it through the interrupt controller (INTC):

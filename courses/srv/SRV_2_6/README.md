@@ -1,7 +1,7 @@
 # SRV 2.6: A mutex for a shared variable
 
 > **Run it in the browser:** [rvisio.com](https://rvisio.com) → Open simulator → **System on chip (SoC)** →
-> **📦 FreeRTOS demos** → *🎓 Course: Real Time Operating Systems* → *SRV 2.6* → **▶ Run**.
+> **📦 FreeRTOS demos** → *🎓 Course: Real Time Operating Systems* → *SRV 2.6* → **⬇ Load program** → **▶ Run**.
 
 Example for task 11 of the course *Real Time Operating Systems* (School of Electrical Engineering,
 University of Belgrade), ported from the ETF5529 board (MSP430F5529) to the RVisio SoC.

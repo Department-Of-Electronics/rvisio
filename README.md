@@ -47,11 +47,11 @@ No toolchain, no board, no installation:
 
 1. Open **[rvisio.com](https://rvisio.com)** and click **Open simulator**.
 2. Choose the analysis **System on chip (SoC)**.
-3. Click **📦 FreeRTOS demos**, pick a demo and press **▶ Run**.
+3. Click **📦 FreeRTOS demos**, pick a demo, press **⬇ Load program** and then **▶ Run** (or **⏭ To end**).
 
 RVisio loads the default SoC board and the compiled program, switches to the **Advanced** panel layout
-(stack analyzer, stacks in memory, console) and starts the program. Use **⏭ To end** / **■ Stop**,
-**+1 cycle** and **+1 instr.** to run, pause and step; drag across a chart to zoom in.
+(stack analyzer, stacks in memory, console); start it with **▶ Run** or **⏭ To end** and stop it with **⏸ Pause**. Use
+**+1 cycle** and **+1 instr.** to step; drag across a chart to zoom in.
 
 ## Demo projects
 
