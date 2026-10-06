@@ -1,23 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 64" role="img" aria-label="RVisio">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 13 126 40" role="img" aria-label="RVisio">
+  <!-- Animacija (jednom): pojavi se „RV“ i desno od njega celo oko; oko trepne; desna polovina oka (sa „o“)
+       ode udesno, a „isi“ se pojavi iz oka i ode ulevo do „RV“: nastaje „RVisio“ -->
   <defs>
-    <linearGradient id="rv-g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="rv-g" gradientUnits="userSpaceOnUse" x1="58" y1="20" x2="124" y2="50">
       <stop offset="0" stop-color="#2563eb"/>
       <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
     <linearGradient id="rv-t" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#2563eb"/>
-      <stop offset="1" stop-color="#06b6d4"/>
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#6d28d9"/>
     </linearGradient>
   </defs>
-  <g stroke="url(#rv-g)" stroke-width="3.4" stroke-linecap="round">
-    <path d="M22 4v6M32 4v6M42 4v6M22 54v6M32 54v6M42 54v6M4 22h6M4 32h6M4 42h6M54 22h6M54 32h6M54 42h6"/>
+  <style>
+    .rv-c { transform-box: view-box; transform-origin: 101.2px 35.2px; }
+    .rv-rv { animation: rv-rv .5s ease-out both; }
+    .rv-in { animation: rv-in .45s ease-out .2s both; }
+    .rv-blink { animation: rv-blink .36s ease-in-out .8s both; }
+    .rv-eye { animation: rv-move 1s cubic-bezier(.2, .8, .2, 1) 1.3s both; }
+    .rv-left { animation: rv-left .5s ease-in 1.3s both; }
+    .rv-iris { animation: rv-iris .5s ease-in 1.3s both; }
+    .rv-o { animation: rv-o .5s ease-out 1.3s both; }
+    .rv-isi { transform-box: view-box; transform-origin: 54.6px 35px; animation: rv-isi .9s cubic-bezier(.2, .8, .2, 1) 1.45s both; }
+    @keyframes rv-rv { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes rv-in { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+    @keyframes rv-blink { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.08); } }
+    @keyframes rv-move { from { transform: translateX(-22px); } to { transform: translateX(0); } }
+    @keyframes rv-left { from { opacity: 1; transform: scaleX(1); } to { opacity: 0; transform: scaleX(.35); } }
+    @keyframes rv-iris { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes rv-o { from { opacity: 0; transform: scale(.55); } to { opacity: 1; transform: scale(1); } }
+    @keyframes rv-isi { from { opacity: 0; transform: translateX(26px) scale(.4); } 30% { opacity: 1; } to { opacity: 1; transform: translateX(0) scale(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      .rv-rv, .rv-in, .rv-blink, .rv-eye, .rv-left, .rv-iris, .rv-o, .rv-isi { animation: none; }
+      .rv-left, .rv-iris { opacity: 0; }
+    }
+  </style>
+  <text class="rv-rv" x="4" y="45" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-1" fill="url(#rv-t)">RV</text>
+  <text class="rv-isi" x="54.6" y="45" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="650" letter-spacing="-1" fill="url(#rv-g)">isi</text>
+  <g class="rv-eye">
+    <g class="rv-c rv-in">
+      <g class="rv-c rv-blink">
+        <!-- leva polovina oka: nestaje kad se oko razdvoji -->
+        <path class="rv-c rv-left" d="M101.2 21.7C92.8 21.7 84.4 26.2 80.9 35.2C84.4 44.2 92.8 48.7 101.2 48.7" fill="none" stroke="url(#rv-g)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- desna polovina oka: ide udesno i ostaje -->
+        <path d="M101.2 21.7C109.6 21.7 118 26.2 121.5 35.2C118 44.2 109.6 48.7 101.2 48.7" fill="none" stroke="url(#rv-g)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- dužica celog oka (puna), prelazi u slovo „o“ -->
+        <circle class="rv-iris" cx="101.2" cy="35.2" r="6.2" fill="url(#rv-g)"/>
+        <circle class="rv-c rv-o" cx="101.2" cy="35.2" r="7.4" fill="none" stroke="url(#rv-g)" stroke-width="5.6"/>
+        <!-- zenica-čip -->
+        <rect x="99.2" y="33.2" width="4" height="4" rx="0.9" fill="#fff"/>
+        <rect class="rv-c rv-o" x="99.2" y="33.2" width="4" height="4" rx="0.9" fill="url(#rv-g)"/>
+      </g>
+    </g>
   </g>
-  <rect x="11" y="11" width="42" height="42" rx="11" fill="url(#rv-g)"/>
-  <path d="M17.5 32C22.5 23.2 41.5 23.2 46.5 32C41.5 40.8 22.5 40.8 17.5 32Z" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
-  <circle cx="32" cy="32" r="6.6" fill="#fff"/>
-  <rect x="29.2" y="29.2" width="5.6" height="5.6" rx="1.2" fill="#1d4ed8"/>
-  <!-- RVisio: „RV“ u boji, „isio“ u boji teksta (currentColor) -->
-  <text x="74" y="45" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-1">
-    <tspan fill="url(#rv-t)">RV</tspan><tspan fill="#0f172a" font-weight="650">isio</tspan>
-  </text>
 </svg>
